@@ -2302,6 +2302,13 @@ set print array off
 set print array-indexes on
 set python print-stack full
 
+define jsontostring 
+   printf "%s\n", $arg0.dump(2, ' ', true, nlohmann::detail::error_handler_t::strict).c_str()
+end
+
+#(gdb) jsontostring object
+
+
 # Start ------------------------------------------------------------------------
 
 python Dashboard.start()
